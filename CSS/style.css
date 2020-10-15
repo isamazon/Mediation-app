@@ -37,16 +37,45 @@
     transform: translate(-50%, -50%);
     pointer-events: none;
 }
-.time-select{
-    background: cyan;
-}
-.sound-picker{
-    background: darkblue;
-}
-.player-container{
-    background: darkcyan;
+
+.time-display {
+    position: absolute;
+    bottom: 10%;
+    color: whitesmoke;
+    font-size: 50px;
+    letter-spacing: 5px;
 }
 
 .video-container {
-    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    z-index: -1;
+}
+.treesvg {
+    color: white;
+}
+.time-select button, 
+.sound-picker button{
+    color: black;
+    width: 30%;
+    height: 10%;
+    background: none;
+    border: 3px solid black;
+    cursor: pointer;
+    border-radius: 50px;
+    font-size: 20px;
+    letter-spacing: 3px;
+    transition: all 1.0s ease; 
+}
+.time-select button:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(1, 225, 255);
+}
+.sound-picker button{
+    border: none;
+}
+.sound-picker button:hover {
+    box-shadow: 0px -30px 15px rgb(1, 225, 255);
 }
