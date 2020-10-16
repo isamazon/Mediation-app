@@ -8,6 +8,7 @@ const app = () => {
     const sounds = document.querySelectorAll('.sound-picker button');
     // Time displat
     const timeDisplay = document.querySelector('.time-display');
+    const timeSelect = document.querySelectorAll('.time-select button')
     // get the length of the outline
     const outlineLength = outline.getTotalLength();
     // Duration
@@ -21,6 +22,17 @@ const app = () => {
         checkPlaying(song);
     });
 
+
+
+    //Select sound
+    timeSelect.forEach(option => {
+        option.addEventListener('click', function(){
+            fakeDuration = this.getAttribute("data-time");
+            timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(fakeDuration % 60)}`
+        });
+    });
+
+
     // Create a function specific to stop and play the song/sounds
     const checkPlaying = song => {
         if (song.paused) {
@@ -33,4 +45,20 @@ const app = () => {
             play.src = '../svg/play.svg';
         }
     }
+
+    // Animate the circle
+    song.ontimeupdate = () => {
+        let currentTime = song.currentTime;
+        let elapsed = fakeDuration - currentTime;
+        let seconds = Math.floor(elapsed % 60);
+        let minutes = Math.floor(elapsed / 60);
+
+
+        // Animate the bar/circle
+        let progress = outlineLength - (currentTime / fakeDuration) * outlineLength
+        outline.style.strokeDashoffset = progress 
+        // Animate the time text
+        timeDisplay.textContent = `${minutes}:${seconds}`
+    }
 }
+app();

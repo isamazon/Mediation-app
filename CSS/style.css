@@ -12,8 +12,11 @@
 }
 .timeH1, 
 .soundH1 {
-    letter-spacing: 2px;
+    letter-spacing: 5px;
     padding-bottom: 10px;
+    font-size: 50px;
+    color: rgb(230, 216, 216);
+    text-decoration: underline;
 }
 .time-select, 
 .sound-picker{
